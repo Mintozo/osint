@@ -3,316 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSINT.Name - Advanced Intelligence Research Platform</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>OSINT.Name - Open Source Intelligence Tools</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
+        :root {
+            --bg-primary: #121212; /* Deep dark background */
+            --bg-secondary: #333333; /* Card and header backgrounds */
+            --text-primary: #E0E0E0; /* Main text */
+            --text-secondary: #A0A0A0; /* Subtle text */
+            --accent: #FF6600; /* Glowing orange for highlights */
+            --secondary-accent: #00BFFF; /* Blue for secondary glows */
+            --font-main: 'Montserrat', sans-serif; /* Modern sans-serif */
+            --font-mono: 'Consolas', monospace; /* For code-like elements */
+        }
+
         body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #0d1117;
-            color: #c9d1d9;
             margin: 0;
             padding: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-main);
             line-height: 1.6;
         }
+
         header {
-            background: linear-gradient(to bottom, #161b22, #0d1117);
-            padding: 60px 20px 40px;
+            background-color: var(--bg-secondary);
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             text-align: center;
-            border-bottom: 1px solid #30363d;
         }
-        header h1 {
-            font-size: 3.8em;
+
+        h1 {
             margin: 0;
-            color: #58a6ff;
-            text-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
-            letter-spacing: 2px;
+            font-size: 2rem;
+            color: var(--accent);
         }
-        header .tagline {
-            font-size: 1.4em;
-            margin: 15px 0 0;
-            color: #8b949e;
-            font-weight: 300;
-        }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .intro {
-            text-align: center;
-            margin: 50px 0 70px;
-        }
-        .intro h2 {
-            font-size: 2.2em;
-            color: #e6edf3;
-            margin-bottom: 25px;
-        }
-        .intro p {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            font-size: 1.1em;
-            color: #8b949e;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 80px;
-        }
-        .feature {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 30px 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .feature:hover {
-            transform: translateY(-8px);
-            border-color: #58a6ff;
-            box-shadow: 0 10px 30px rgba(88, 166, 255, 0.15);
-        }
-        .feature i {
-            font-size: 3.2em;
-            color: #58a6ff;
-            margin-bottom: 20px;
-        }
-        .feature h3 {
-            font-size: 1.6em;
-            color: #e6edf3;
-            margin: 0 0 12px;
-        }
-        .feature p {
-            color: #8b949e;
-            font-size: 1.05em;
-        }
-        .tools-section {
-            margin: 80px 0;
-        }
-        .tools-section h2 {
-            text-align: center;
-            font-size: 2.4em;
-            color: #e6edf3;
-            margin-bottom: 40px;
-        }
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .category {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 20px;
-            transition: all 0.25s ease;
-        }
-        .category:hover {
-            border-color: #238636;
-            transform: scale(1.02);
-        }
-        .category h3 {
-            font-size: 1.4em;
-            color: #7ee787;
-            margin: 0 0 15px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
-        }
-        .category ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .category li {
-            margin: 10px 0;
-        }
-        .category a {
-            color: #8b949e;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .category a:hover {
-            color: #58a6ff;
-        }
-        .cta-section {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(to bottom, #0d1117, #161b22);
-            border-radius: 12px;
-            margin: 60px 0;
-            border: 1px solid #30363d;
-        }
-        .cta-section h2 {
-            font-size: 2.5em;
-            color: #e6edf3;
-            margin-bottom: 25px;
-        }
-        .cta-section p {
-            font-size: 1.2em;
-            color: #8b949e;
-            max-width: 700px;
-            margin: 0 auto 35px;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #238636;
-            color: white;
-            padding: 16px 40px;
-            font-size: 1.2em;
-            text-decoration: none;
+
+        .search-bar {
+            max-width: 600px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--accent);
             border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.3s;
-            margin: 10px;
+            padding: 0.5rem;
         }
-        .btn:hover {
-            background-color: #2ea043;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(46, 160, 67, 0.3);
+
+        .search-bar input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            padding: 0.5rem;
         }
-        .btn.secondary {
-            background-color: transparent;
-            border: 2px solid #58a6ff;
-            color: #58a6ff;
+
+        .search-bar input:focus {
+            outline: none;
         }
-        .btn.secondary:hover {
-            background-color: rgba(88, 166, 255, 0.1);
+
+        .search-bar .icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
         }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 0 10px rgba(var(--accent), 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(var(--secondary-accent), 0.4);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--secondary-accent);
+        }
+
         footer {
-            background-color: #0d1117;
-            padding: 40px 20px;
+            background-color: var(--bg-secondary);
             text-align: center;
-            border-top: 1px solid #30363d;
-            color: #8b949e;
-            font-size: 0.95em;
+            padding: 0.5rem;
+            margin-top: 2rem;
         }
-        footer a {
-            color: #58a6ff;
-            text-decoration: none;
-            margin: 0 12px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .contact-emails {
-            margin-top: 25px;
-            font-size: 1.05em;
-        }
-        .contact-emails a {
-            color: #7ee787;
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .search-bar {
+                margin: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>OSINT.Name</h1>
-        <div class="tagline">Next-Generation Open Source Intelligence Platform</div>
     </header>
-
-    <div class="container">
-        <section class="intro">
-            <h2>Precision. Structure. Insight.</h2>
-            <p>OSINT.Name is an evolving research platform engineered for serious digital footprint analysis, identity verification workflows, and structured investigative operations.</p>
-            <p>Designed from the ground up for investigators, researchers, journalists, and analysts who demand clean, reliable, and powerful tooling in an increasingly noisy digital landscape.</p>
-        </section>
-
-        <section class="features">
-            <div class="feature">
-                <i class="fas fa-fingerprint"></i>
-                <h3>Digital Footprint Mapping</h3>
-                <p>Comprehensive cross-platform presence discovery, linkage analysis, and behavioral pattern extraction.</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-shield-check"></i>
-                <h3>Verification & Validation Engine</h3>
-                <p>Multi-layered source credibility assessment, document authentication, and disinformation detection workflows.</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-sitemap"></i>
-                <h3>Structured Investigation Framework</h3>
-                <p>Case management, entity graphing, timeline builders, and modular tool integration for repeatable, defensible workflows.</p>
-            </div>
-        </section>
-
-        <section class="tools-section">
-            <h2>Core Intelligence Categories</h2>
-            <div class="categories">
-                <div class="category">
-                    <h3>Identity & Social</h3>
-                    <ul>
-                        <li><a href="#">Username & Handle Enumeration</a></li>
-                        <li><a href="#">Cross-Platform Link Analysis</a></li>
-                        <li><a href="#">Profile Deep Scraping</a></li>
-                        <li><a href="#">Sockpuppet Detection</a></li>
-                    </ul>
-                </div>
-                <div class="category">
-                    <h3>Geospatial Intelligence</h3>
-                    <ul>
-                        <li><a href="#">IP → Physical Geolocation</a></li>
-                        <li><a href="#">EXIF & Metadata Geotagging</a></li>
-                        <li><a href="#">Satellite & Street-Level Verification</a></li>
-                        <li><a href="#">Geofence Pattern Analysis</a></li>
-                    </ul>
-                </div>
-                <div class="category">
-                    <h3>Documents & Records</h3>
-                    <ul>
-                        <li><a href="#">Public & Leaked Record Search</a></li>
-                        <li><a href="#">Wayback & Archive Mining</a></li>
-                        <li><a href="#">Metadata Forensics</a></li>
-                        <li><a href="#">OCR & Document Parsing</a></li>
-                    </ul>
-                </div>
-                <div class="category">
-                    <h3>Network & Infrastructure</h3>
-                    <ul>
-                        <li><a href="#">Domain & WHOIS Intelligence</a></li>
-                        <li><a href="#">ASN & Hosting Mapping</a></li>
-                        <li><a href="#">Passive DNS & Certificate Transparency</a></li>
-                        <li><a href="#">Dark Web Surface Monitoring</a></li>
-                    </ul>
-                </div>
-                <div class="category">
-                    <h3>Media Verification</h3>
-                    <ul>
-                        <li><a href="#">Reverse Image & Video Search</a></li>
-                        <li><a href="#">Deepfake & Manipulation Detection</a></li>
-                        <li><a href="#">Content Provenance Tracing</a></li>
-                        <li><a href="#">Audio Forensics Tools</a></li>
-                    </ul>
-                </div>
-                <div class="category">
-                    <h3>Advanced Analytics</h3>
-                    <ul>
-                        <li><a href="#">Relationship & Network Visualization</a></li>
-                        <li><a href="#">Temporal Pattern Recognition</a></li>
-                        <li><a href="#">Anomaly & Outlier Detection</a></li>
-                        <li><a href="#">Custom Workflow Automation</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <h2>Shape the Future of OSINT</h2>
-            <p>This platform is under active development — open-source, community-driven, and built for long-term evolution into a landmark intelligence resource.</p>
-            <a href="https://github.com/Mintozo/osint" class="btn">Explore GitHub Repository</a>
-            <a href="mailto:contact@osint.name" class="btn secondary">Get in Touch</a>
-        </section>
+    <div class="search-bar">
+        <span class="icon">&#128269;</span> <!-- Magnifying glass emoji as icon -->
+        <input type="text" placeholder="Search for intelligence...">
     </div>
-
+    <main>
+        <div class="card">
+            <h2>Tool 1: Data Lookup</h2>
+            <p>Enter queries to uncover hidden information. Secure and anonymous.</p>
+        </div>
+        <div class="card">
+            <h2>Tool 2: Profile Analysis</h2>
+            <p>Analyze social media and public records with advanced filters.</p>
+        </div>
+        <div class="card">
+            <h2>Recent Investigations</h2>
+            <p>View case studies and tips for effective OSINT practices.</p>
+        </div>
+    </main>
     <footer>
-        <p>© 2026 OSINT.Name — All rights reserved.</p>
-        <p class="contact-emails">
-            General inquiries: <a href="mailto:contact@osint.name">contact@osint.name</a><br>
-            Administrative / Security: <a href="mailto:admin@osint.name">admin@osint.name</a>
-        </p>
-        <p>
-            <a href="#">Privacy & Data Policy</a> •
-            <a href="#">Terms of Use</a> •
-            <a href="#">Contributing Guidelines</a>
-        </p>
+        <p>&copy; 2026 OSINT.Name | All rights reserved</p>
     </footer>
 </body>
 </html>
