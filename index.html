@@ -3,118 +3,272 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OSINT.Name</title>
-  <meta name="description" content="OSINT.Name — a developing resource hub for open source intelligence methodologies, digital footprint research, and ethical investigative practices.">
-  <meta name="robots" content="index,follow" />
+  <title>OSINT.Name — Open Source Intelligence</title>
+  <meta name="description" content="OSINT.Name — a developing resource hub for OSINT methods, digital footprint analysis, and verification workflows." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Social preview (optional but makes it look real) -->
+  <meta property="og:title" content="OSINT.Name" />
+  <meta property="og:description" content="Open Source Intelligence methods, verification workflows, and research tooling — curated and practical." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://osint.name/" />
+
   <style>
     :root{
-      --bg:#0b1020; --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.12);
-      --text:#e8eefc; --muted:#b7c4e6;
+      --bg:#070a12;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.14);
+      --text:#eef3ff;
+      --muted:#b9c6e6;
+      --muted2:#93a4c9;
+      --accent:#6ea8ff;
+      --accent2:#34d399;
+      --shadow: 0 30px 80px rgba(0,0,0,.55);
+      --radius: 22px;
+      --radius2: 16px;
     }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0; min-height:100vh; color:var(--text);
+      margin:0;
+      color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
-        radial-gradient(900px 500px at 15% 10%, rgba(99,102,241,.25), transparent 60%),
-        radial-gradient(900px 500px at 85% 20%, rgba(34,211,238,.18), transparent 60%),
-        radial-gradient(700px 450px at 50% 90%, rgba(16,185,129,.12), transparent 60%),
+        radial-gradient(900px 500px at 15% 10%, rgba(110,168,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 85% 25%, rgba(52,211,153,.15), transparent 60%),
+        radial-gradient(700px 450px at 50% 90%, rgba(147,164,201,.10), transparent 60%),
         var(--bg);
+      overflow-x:hidden;
     }
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:980px; margin:0 auto; padding:56px 18px}
-    .top{display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:18px}
-    .badge{
+    .wrap{max-width:1100px; margin:0 auto; padding:54px 18px 34px}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(110,168,255,.35), rgba(52,211,153,.25));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+    .brand h1{
+      font-size:16px; margin:0; letter-spacing:.3px;
+    }
+    .brand small{display:block; color:var(--muted2); font-weight:500; margin-top:2px}
+
+    .pillrow{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 12px; border-radius:999px;
-      background:rgba(255,255,255,.06); border:1px solid var(--border);
-      font-size:13px; color:var(--muted);
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
       backdrop-filter: blur(8px);
     }
-    .dot{width:8px; height:8px; border-radius:999px; background:rgba(16,185,129,.9)}
-    .card{
-      padding:28px; border-radius:22px;
-      background:var(--card); border:1px solid var(--border);
-      box-shadow: 0 24px 80px rgba(0,0,0,.45);
-      backdrop-filter: blur(10px);
+    .dot{width:8px; height:8px; border-radius:999px; background:rgba(52,211,153,.95)}
+    .dot2{width:8px; height:8px; border-radius:999px; background:rgba(110,168,255,.95)}
+
+    .hero{
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      padding:30px;
+      position:relative;
     }
-    h1{margin:0; font-size:44px; letter-spacing:.2px}
-    .sub{margin:10px 0 0; color:var(--muted); font-size:16px; line-height:1.6}
-    .grid{display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px}
-    @media (min-width:820px){ .grid{grid-template-columns:1.2fr .8fr} }
-    .panel{
-      padding:16px; border-radius:16px;
-      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10);
+
+    .hero h2{
+      margin:0;
+      font-size:46px;
+      line-height:1.05;
+      letter-spacing:.2px;
     }
-    ul{margin:10px 0 0; padding:0 0 0 18px; color:var(--muted); line-height:1.7}
-    .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+    .hero p{
+      margin:12px 0 0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      max-width:70ch;
+    }
+
+    .cta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:18px;
+      align-items:center;
+    }
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.14);
+      display:inline-flex; align-items:center; gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
       background:rgba(255,255,255,.06);
-      font-weight:600; font-size:14px;
+      border:1px solid rgba(255,255,255,.16);
+      font-weight:700; font-size:14px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
     }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.26)}
     .btn.primary{
-      background:rgba(99,102,241,.22);
-      border-color: rgba(99,102,241,.45);
+      background:linear-gradient(135deg, rgba(110,168,255,.28), rgba(52,211,153,.18));
+      border-color: rgba(110,168,255,.35);
     }
-    .btn:hover{transform: translateY(-1px)}
-    .foot{
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between;
-      margin-top:14px; color:rgba(255,255,255,.55); font-size:12px;
+    .btn svg{opacity:.9}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (min-width:900px){
+      .grid{grid-template-columns: 1.15fr .85fr}
+    }
+
+    .card{
+      border-radius:var(--radius2);
+      background:var(--panel2);
+      border:1px solid rgba(255,255,255,.12);
+      padding:16px;
+    }
+    .card h3{
+      margin:0; font-size:14px; letter-spacing:.2px;
+      color:rgba(255,255,255,.92);
+    }
+    .card p{
+      margin:8px 0 0; color:var(--muted); line-height:1.65; font-size:14px;
+    }
+
+    .list{
+      margin:10px 0 0; padding:0; list-style:none;
+      display:grid; gap:10px;
+    }
+    .item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .icon{
+      width:26px; height:26px; border-radius:10px;
+      display:grid; place-items:center;
+      background:rgba(110,168,255,.14);
+      border:1px solid rgba(110,168,255,.20);
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+    .item b{display:block; font-size:13px}
+    .item span{display:block; color:var(--muted2); font-size:13px; margin-top:2px; line-height:1.5}
+
+    footer{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin-top:16px;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+      padding: 10px 2px;
     }
     code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="top">
-      <div class="badge"><span class="dot"></span>Reserved • Coming soon</div>
-      <div class="badge">Domain: <code>osint.name</code></div>
-    </div>
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>OSINT.Name</h1>
+          <small>Open Source Intelligence • Curated & practical</small>
+        </div>
+      </div>
 
-    <div class="card">
-      <h1>OSINT.Name</h1>
-      <p class="sub">
-        A developing resource hub for open source intelligence methodologies, digital footprint research,
-        and ethical investigative practices.
+      <div class="pillrow">
+        <div class="pill"><span class="dot"></span>Live</div>
+        <div class="pill"><span class="dot2"></span><code>osint.name</code></div>
+      </div>
+    </header>
+
+    <main class="hero">
+      <h2>Research. Verify. Document.</h2>
+      <p>
+        OSINT.Name is a developing hub for OSINT methods, digital footprint analysis, and verification workflows.
+        Built to be practical: playbooks, checklists, and tooling notes — not fluff.
       </p>
 
-      <div class="grid">
-        <div class="panel">
-          <strong>Focus areas</strong>
-          <ul>
-            <li>Digital footprint analysis & identity correlation</li>
-            <li>Public data research workflows</li>
-            <li>Metadata fundamentals and verification methods</li>
-            <li>Operational security principles (OPSEC)</li>
-          </ul>
+      <div class="cta">
+        <a class="btn primary" href="mailto:contact@osint.name" aria-label="Email OSINT.Name">
+          <!-- mail icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/></svg>
+          Contact
+        </a>
 
-          <div class="btns">
-            <a class="btn primary" href="mailto:contact@osint.name">Contact</a>
-            <a class="btn" href="https://github.com/Mintzo/osint" target="_blank" rel="noopener">GitHub</a>
-          </div>
+        <a class="btn" href="https://github.com/Mintzo/osint" target="_blank" rel="noopener">
+          <!-- github-ish icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.11-1.52-1.11-1.52-.9-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.55 2.36 1.1 2.94.84.09-.67.35-1.1.64-1.36-2.22-.26-4.56-1.13-4.56-5.03 0-1.11.39-2.01 1.03-2.72-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.04A9.3 9.3 0 0 1 12 6.8c.85 0 1.71.12 2.51.35 1.9-1.31 2.74-1.04 2.74-1.04.56 1.42.21 2.47.11 2.73.64.71 1.03 1.61 1.03 2.72 0 3.91-2.34 4.76-4.57 5.02.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.48A10.27 10.27 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z" fill="currentColor"/></svg>
+          GitHub
+        </a>
+
+        <span class="pill">Status: <b>Content buildout</b></span>
+      </div>
+
+      <section class="grid" aria-label="Overview">
+        <div class="card">
+          <h3>What to expect</h3>
+          <ul class="list">
+            <li class="item">
+              <div class="icon">✓</div>
+              <div>
+                <b>Workflows & checklists</b>
+                <span>Repeatable steps for verification, documentation, and triage.</span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="icon">⌁</div>
+              <div>
+                <b>Tooling notes</b>
+                <span>Setup guidance, caveats, and operational tips that save time.</span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="icon">⎘</div>
+              <div>
+                <b>Templates</b>
+                <span>Report scaffolds, link hygiene, and evidence-handling basics.</span>
+              </div>
+            </li>
+          </ul>
         </div>
 
-        <div class="panel">
-          <strong>Status</strong>
-          <p class="sub" style="margin:10px 0 0;">
-            Initial buildout in progress. This page is intentionally minimal while content is being developed.
+        <div class="card">
+          <h3>Quick links</h3>
+          <p>
+            Want this to look even more “official”? Add a logo + an Open Graph image next.
+          </p>
+          <div class="cta">
+            <a class="btn" href="https://osint.name/" aria-label="Open site">Visit site</a>
+            <a class="btn" href="mailto:admin@osint.name" aria-label="Email admin">Admin</a>
+          </div>
+          <p style="margin-top:10px; color:var(--muted2)">
+            Tip: keep this page minimal while reputation/SEO warms up—then expand.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div class="foot">
+      <footer>
         <span>© <span id="y"></span> OSINT.Name</span>
-        <span>Last updated: <span id="d"></span></span>
-      </div>
-    </div>
+        <span>Built on GitHub Pages • <code>main</code> branch</span>
+      </footer>
+    </main>
   </div>
 
   <script>
-    const now = new Date();
-    document.getElementById('y').textContent = now.getFullYear();
-    document.getElementById('d').textContent = now.toISOString().slice(0,10);
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
