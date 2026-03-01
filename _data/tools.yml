@@ -1,0 +1,9 @@
+- name: OSINT Framework
+  url: https://osintframework.com/
+  category: Directory
+  tags: [starter, taxonomy]
+  pricing: free
+  requires_account: false
+  data_types: [general]
+  notes: "Clickable tree of OSINT resources."
+  source: Seed

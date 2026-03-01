@@ -1,0 +1,5 @@
+title: OSINT.Name
+description: Marketplace-style OSINT Directory
+collections:
+  tools:
+    output: true

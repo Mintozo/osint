@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }}</title>
+<style>
+body {
+    background:#0e0e11;
+    color:#e6e6e6;
+    font-family:Segoe UI, Roboto, sans-serif;
+    margin:0;
+}
+header {
+    padding:20px;
+    font-size:24px;
+    font-weight:600;
+    border-bottom:1px solid #222;
+}
+.container {
+    padding:20px;
+}
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:20px;
+}
+.card {
+    background:#16161a;
+    border:1px solid #26262d;
+    border-radius:16px;
+    padding:18px;
+    transition:0.2s;
+}
+.card:hover {
+    transform:translateY(-4px);
+    border-color:#3a3aff;
+}
+.card h3 {
+    margin:0 0 8px 0;
+}
+.badge {
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+    margin-right:6px;
+}
+.free { background:#1f6f3a; }
+.paid { background:#7a2d2d; }
+.freemium { background:#8a6a1f; }
+a { color:#6c8cff; text-decoration:none; }
+a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+<header>OSINT.Name</header>
+<div class="container">
+{{ content }}
+</div>
+</body>
+</html>
